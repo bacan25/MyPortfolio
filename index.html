@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Ángel González Peña - Portafolio</title>
+    <!-- Fuente "Press Start 2P" para el estilo retro -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Variables de colores y fuentes */
+        :root {
+            --color-fondo: #111;
+            /* color de fondo general */
+            --color-primario: #ff0000;
+            /* rojo retro */
+            --color-secundario: #202020;
+            /* gris oscuro para secciones */
+            --color-terciario: #181818;
+            /* gris aún más oscuro */
+            --color-blanco: #fff;
+        }
+
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-blanco);
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: var(--color-primario);
+            text-decoration: none;
+        }
+
+        /* Centrar títulos en cada sección */
+        section h2,
+        section h3 {
+            text-align: center;
+        }
+
+        /* Global Language Switcher (fijo en la esquina superior derecha) */
+        #lang-switcher {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 200;
+        }
+
+        #lang-switcher button {
+            background: #333;
+            border: none;
+            color: var(--color-blanco);
+            padding: 8px 12px;
+            margin-left: 5px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        #lang-switcher button:hover {
+            background: var(--color-primario);
+        }
+
+        /* Navegación (cada versión tiene su propio nav) */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* Sección Hero con carrusel de fondo */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            width: calc(200%);
+            animation: scrollCarousel 30s linear infinite;
+            opacity: 0.3;
+        }
+
+        .hero-carousel img {
+            height: 100vh;
+            width: auto;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta {
+            padding: 15px 30px;
+            background-color: var(--color-primario);
+            color: var(--color-blanco);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .social-links a {
+            background: #333;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--color-primario);
+        }
+
+        @keyframes scrollCarousel {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Secciones comunes */
+        section {
+            padding: 60px 20px;
+        }
+
+        /* Divisor rojo entre secciones */
+        section+section {
+            border-top: 4px solid var(--color-primario);
+        }
+
+        /* Fondos diferenciados para cada sección */
+        #hero {
+            background: linear-gradient(135deg, #1e1e1e, #333);
+        }
+
+        #about {
+            background-color: var(--color-secundario);
+            /* #202020 */
+        }
+
+        #projects {
+            background-color: var(--color-terciario);
+            /* #181818 */
+        }
+
+        #skills {
+            background-color: var(--color-secundario);
+            /* #202020 */
+        }
+
+        #contact {
+            background-color: var(--color-terciario);
+            /* #181818 */
+        }
+
+        /* Estilos para "Sobre mí" */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .profile-img {
+            max-width: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--color-primario);
+        }
+
+        .about-content p {
+            flex: 1;
+            min-width: 280px;
+            line-height: 1.6;
+        }
+
+        /* Slider de Proyectos */
+        .slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border: 2px solid var(--color-primario);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .slider-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-buttons button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: var(--color-blanco);
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .premio-img {
+            max-width: 150px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Habilidades */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 200px;
+            text-align: center;
+            border: 2px solid var(--color-primario);
+        }
+
+        /* Contacto */
+        .whatsapp-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #25d366;
+            color: var(--color-blanco);
+            border-radius: 50px;
+            font-size: 18px;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .slider {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Global Language Switcher -->
+    <div id="lang-switcher">
+        <button onclick="setLanguage('es')">ES</button>
+        <button onclick="setLanguage('en')">EN</button>
+    </div>
+
+    <!-- Versión en Español -->
+    <div id="content-es">
+        <!-- Navegación -->
+        <nav>
+            <a href="#hero-es">Inicio</a>
+            <a href="#about-es">Sobre mí</a>
+            <a href="#projects-es">Proyectos</a>
+            <a href="#skills-es">Habilidades</a>
+            <a href="#contact-es">Contacto</a>
+        </nav>
+
+        <!-- Sección Hero -->
+        <section id="hero-es" class="hero">
+            <div class="hero-carousel">
+                <img src="images/fotoCarrusel1.jpg" alt="Imagen Carrusel 1">
+                <img src="images/fotoCarrusel2.jpg" alt="Imagen Carrusel 2">
+                <img src="images/fotoCarrusel3.jpg" alt="Imagen Carrusel 3">
+                <img src="images/fotoCarrusel4.jpg" alt="Imagen Carrusel 4">
+                <img src="images/fotoCarrusel5.jpg" alt="Imagen Carrusel 5">
+                <!-- Duplicados para loop continuo -->
+                <img src="images/fotoCarrusel1.jpg" alt="Imagen Carrusel 1">
+                <img src="images/fotoCarrusel2.jpg" alt="Imagen Carrusel 2">
+                <img src="images/fotoCarrusel3.jpg" alt="Imagen Carrusel 3">
+                <img src="images/fotoCarrusel4.jpg" alt="Imagen Carrusel 4">
+                <img src="images/fotoCarrusel5.jpg" alt="Imagen Carrusel 5">
+            </div>
+            <div class="hero-content">
+                <h1>Miguel Ángel González Peña</h1>
+                <p>Comunicador desarrollador de Videojuegos y Tecnólogo en Gestión de Redes de Datos</p>
+                <button class="cta" onclick="scrollToSection('about-es')">Descubre más</button>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/miguel-gonzalez-76a179168" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/bacan25" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Sobre mí -->
+        <section id="about-es">
+            <h2>Sobre mí</h2>
+            <div class="about-content">
+                <img src="images/Perfil.jpg" alt="Foto de perfil" class="profile-img">
+                <p>
+                    Soy Miguel Ángel González Peña, desarrollador de videojuegos con formación en Comunicación en
+                    Entretenimiento Digital. Combino habilidades en programación (C++, Python, C# con Unity, Java),
+                    diseño gráfico (Adobe Suite), animación, edición audiovisual, web y me apasiona la Inteligencia
+                    Artificial. Además, tengo experiencia trabajando con motores como Unity y Unreal Engine.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección Proyectos -->
+        <section id="projects-es">
+            <h2>Proyectos</h2>
+
+            <!-- Primer proyecto: Al ritmo de las leyendas -->
+            <div class="slider" id="projectSlider-es">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="images/portada.jpg" alt="Portada - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/tutorial.jpg" alt="Tutorial - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/juego.jpg" alt="Juego - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/gameOver.jpg" alt="Game Over - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/RitmoPresen.png" alt="Presentación - Al ritmo de las leyendas">
+                    </div>
+                </div>
+                <div class="slider-buttons">
+                    <button onclick="prevSlide('es')">&#10094;</button>
+                    <button onclick="nextSlide('es')">&#10095;</button>
+                </div>
+            </div>
+            <div class="info">
+                <h3>Proyecto Destacado: "Al ritmo de las leyendas"</h3>
+                <p>
+                    Juego musical en 2D para móviles donde interpretas a César, un niño de Amagá, Antioquia,
+                    enfrentándose a leyendas y mitos del Suroeste Antioqueño mediante la música típica de la región.
+                    Desarrollé un motor de niveles similar a Guitar Hero y el proyecto fue reconocido con el "Premio
+                    Huellas 2023" de la Universidad de Medellín.
+                </p>
+                <img src="images/Premio.jpg" alt="Premio Huellas 2023" class="premio-img">
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                <h4 style="margin-bottom: 1rem;">Video - Ritmo de las leyendas</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mTA3mPvhEoo?si=Z_dRvXhLF24BaBGM"
+                    title="Ritmo de las leyendas Teaser" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+
+
+
+            <!-- Segundo proyecto: Haunted Blind -->
+            <hr style="margin: 40px auto; width: 60%; border: 2px dashed var(--color-primario);">
+            <div class="info">
+                <h3>Haunted Blind</h3>
+                <img src="images/HauntedBlind.jpg" alt="Haunted Blind" style="max-width: 400px; margin-top: 20px;">
+                <p style="margin-top: 20px;">
+                    Haunted Blind es un juego diseñado para personas con discapacidad visual, donde el objetivo es
+                    escapar de un lugar abandonado. El proyecto busca ofrecer una experiencia de terror inmersiva
+                    mientras
+                    el jugador explora distintos mapas creados por la comunidad. <br><br>
+                    <strong>Mi participación</strong> consistió en la conexión a la base de datos y la creación de la
+                    página
+                    web donde los usuarios podían crear sus propias campañas para ampliar el juego.
+                </p>
+                <h4>Video</h4>
+                <h4>Video - Haunted Blind</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/k_bjDtAy-qE?si=phfSiEF2Q_4-v8NK"
+                    title="Haunted Blind Teaser" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+        </section>
+
+        <!-- Sección Habilidades -->
+        <section id="skills-es">
+            <h2>Habilidades</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <h3>Programación</h3>
+                    <p>C++, Python, C#, Java</p>
+                </div>
+                <div class="skill">
+                    <h3>Motores de Juego</h3>
+                    <p>Unity, Unreal Engine</p>
+                </div>
+                <div class="skill">
+                    <h3>Diseño y Multimedia</h3>
+                    <p>Adobe Suite (Photoshop, Illustrator, Premiere), Animación y Efectos Visuales</p>
+                </div>
+                <div class="skill">
+                    <h3>Web e IA</h3>
+                    <p>HTML, CSS, JavaScript,<br>Entusiasta de la Inteligencia Artificial</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto ES -->
+        <section id="contact-es">
+            <h2>Contacto</h2>
+            <div style="text-align: center;">
+                <a class="whatsapp-button" href="https://wa.me/3167269065" target="_blank">Contáctame por WhatsApp</a>
+                <!-- CV en español -->
+                <a href="cv/CVSP.pdf" target="_blank" class="whatsapp-button" style="background:#444;">Ver mi CV
+                    (PDF)</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Versión en Inglés -->
+    <div id="content-en" style="display: none;">
+        <!-- Navegación -->
+        <nav>
+            <a href="#hero-en">Home</a>
+            <a href="#about-en">About</a>
+            <a href="#projects-en">Projects</a>
+            <a href="#skills-en">Skills</a>
+            <a href="#contact-en">Contact</a>
+        </nav>
+
+        <!-- Sección Hero -->
+        <section id="hero-en" class="hero">
+            <div class="hero-carousel">
+                <img src="images/fotoCarrusel1.jpg" alt="Carousel Image 1">
+                <img src="images/fotoCarrusel2.jpg" alt="Carousel Image 2">
+                <img src="images/fotoCarrusel3.jpg" alt="Carousel Image 3">
+                <img src="images/fotoCarrusel4.jpg" alt="Carousel Image 4">
+                <img src="images/fotoCarrusel5.jpg" alt="Carousel Image 5">
+                <!-- Duplicados para loop continuo -->
+                <img src="images/fotoCarrusel1.jpg" alt="Carousel Image 1">
+                <img src="images/fotoCarrusel2.jpg" alt="Carousel Image 2">
+                <img src="images/fotoCarrusel3.jpg" alt="Carousel Image 3">
+                <img src="images/fotoCarrusel4.jpg" alt="Carousel Image 4">
+                <img src="images/fotoCarrusel5.jpg" alt="Carousel Image 5">
+            </div>
+            <div class="hero-content">
+                <h1>Miguel Ángel González Peña</h1>
+                <p>Communicator Video Game Developer & Data Networks Technology Specialist</p>
+                <button class="cta" onclick="scrollToSection('about-en')">Learn More</button>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/miguel-gonzalez-76a179168" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/bacan25" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección About -->
+        <section id="about-en">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="images/Perfil.jpg" alt="Profile Picture" class="profile-img">
+                <p>
+                    I am Miguel Ángel González Peña, a passionate video game developer with an educational background in
+                    Digital Entertainment Communication. I combine skills in programming (C++, Python, C#, Java),
+                    graphic design (Adobe Suite), animation, audiovisual editing, web development, and I'm enthusiastic
+                    about Artificial Intelligence. I also have experience working with game engines like Unity and
+                    Unreal Engine.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección Projects -->
+        <section id="projects-en">
+            <h2>Projects</h2>
+
+            <!-- First project: Al ritmo de las leyendas -->
+            <div class="slider" id="projectSlider-en">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="images/portada.jpg" alt="Cover - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/tutorial.jpg" alt="Tutorial - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/juego.jpg" alt="Game - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/gameOver.jpg" alt="Game Over - Al ritmo de las leyendas">
+                    </div>
+                    <div class="slide">
+                        <img src="images/RitmoPresen.png" alt="Presentation - Al ritmo de las leyendas">
+                    </div>
+                </div>
+                <div class="slider-buttons">
+                    <button onclick="prevSlide('en')">&#10094;</button>
+                    <button onclick="nextSlide('en')">&#10095;</button>
+                </div>
+            </div>
+            <div class="info">
+                <h3>Featured Project: "Al ritmo de las leyendas"</h3>
+                <p>
+                    A 2D musical game for mobile devices where you play as César, a boy from Amagá, Antioquia, facing
+                    legends and myths from the Southwestern region of Antioquia using traditional music. I developed a
+                    level engine similar to Guitar Hero, and the project was recognized with the "Premio Huellas 2023"
+                    by the University of Medellín.
+                </p>
+                <img src="images/Premio.jpg" alt="Premio Huellas 2023" class="premio-img">
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
+                <h4 style="margin-bottom: 1rem;">Video - Ritmo de las leyendas</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mTA3mPvhEoo?si=Z_dRvXhLF24BaBGM"
+                    title="Ritmo de las leyendas Teaser" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+
+
+
+            <!-- Second project: Haunted Blind -->
+            <hr style="margin: 40px auto; width: 60%; border: 2px dashed var(--color-primario);">
+            <div class="info">
+                <h3>Haunted Blind</h3>
+                <img src="images/HauntedBlind.jpg" alt="Haunted Blind" style="max-width: 400px; margin-top: 20px;">
+                <p style="margin-top: 20px;">
+                    Haunted Blind is a game designed for people with visual disabilities, where the goal is to escape
+                    from an abandoned place. The project aims to offer an immersive horror experience while the player
+                    explores various maps created by the community. <br><br>
+                    <strong>My contribution</strong> included connecting the database and developing the web page
+                    where users could create their own campaigns to expand the game.
+                </p>
+                <h4>Video</h4>
+                <!-- Replace with your actual YouTube video link -->
+                <h4>Video - Haunted Blind</h4>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/k_bjDtAy-qE?si=phfSiEF2Q_4-v8NK"
+                    title="Haunted Blind Teaser" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+        </section>
+
+        <!-- Sección Skills -->
+        <section id="skills-en">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <h3>Programming</h3>
+                    <p>C++, Python, C#, Java</p>
+                </div>
+                <div class="skill">
+                    <h3>Game Engines</h3>
+                    <p>Unity, Unreal Engine</p>
+                </div>
+                <div class="skill">
+                    <h3>Design & Multimedia</h3>
+                    <p>Adobe Suite (Photoshop, Illustrator, Premiere), Animation & Visual Effects</p>
+                </div>
+                <div class="skill">
+                    <h3>Web & AI</h3>
+                    <p>HTML, CSS, JavaScript,<br>Enthusiast of Artificial Intelligence</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contact EN -->
+        <section id="contact-en">
+            <h2>Contact</h2>
+            <div style="text-align: center;">
+                <a class="whatsapp-button" href="https://wa.me/3167269065" target="_blank">Contact Me on WhatsApp</a>
+                <!-- CV en inglés -->
+                <a href="cv/CVENG.pdf" target="_blank" class="whatsapp-button" style="background:#444;">View my CV
+                    (PDF)</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Función para scroll suave (para ambos idiomas)
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Funciones para el slider de proyectos
+        // Se reciben un parámetro (lang) para distinguir entre el slider ES o EN
+        let currentSlide_es = 0, currentSlide_en = 0;
+        const slides_es = document.querySelectorAll('#content-es .slide');
+        const totalSlides_es = slides_es.length;
+        const slides_en = document.querySelectorAll('#content-en .slide');
+        const totalSlides_en = slides_en.length;
+
+        function showSlide(lang, index) {
+            if (lang === 'es') {
+                if (index >= totalSlides_es) { currentSlide_es = 0; }
+                else if (index < 0) { currentSlide_es = totalSlides_es - 1; }
+                else { currentSlide_es = index; }
+                document.querySelector('#content-es .slides').style.transform = 'translateX(' + (-currentSlide_es * 100) + '%)';
+            } else {
+                if (index >= totalSlides_en) { currentSlide_en = 0; }
+                else if (index < 0) { currentSlide_en = totalSlides_en - 1; }
+                else { currentSlide_en = index; }
+                document.querySelector('#content-en .slides').style.transform = 'translateX(' + (-currentSlide_en * 100) + '%)';
+            }
+        }
+        function nextSlide(lang) {
+            if (lang === 'es') {
+                showSlide('es', currentSlide_es + 1);
+            } else {
+                showSlide('en', currentSlide_en + 1);
+            }
+        }
+        function prevSlide(lang) {
+            if (lang === 'es') {
+                showSlide('es', currentSlide_es - 1);
+            } else {
+                showSlide('en', currentSlide_en - 1);
+            }
+        }
+
+        // Auto-rotación de slides cada 5 segundos para cada versión
+        setInterval(() => { nextSlide('es'); }, 5000);
+        setInterval(() => { nextSlide('en'); }, 5000);
+
+        // Función para cambiar de idioma
+        function setLanguage(lang) {
+            if (lang === 'es') {
+                document.getElementById('content-es').style.display = 'block';
+                document.getElementById('content-en').style.display = 'none';
+            } else {
+                document.getElementById('content-es').style.display = 'none';
+                document.getElementById('content-en').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>
