@@ -31,6 +31,18 @@
             scroll-behavior: smooth;
         }
 
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
         h1,
         h2,
         h3 {
@@ -386,8 +398,10 @@
 
         <!-- Sección Sobre mí -->
         <section id="about-es">
-            <h2>Sobre mí</h2>
-            <div class="about-content">
+            <h2 class="fade-in">Sobre mí</h2>
+
+            <div class="about-content fade-in">
+
                 <img src="images/Perfil.jpg" alt="Foto de perfil" class="profile-img">
                 <p>
                     Soy Miguel Ángel González Peña, desarrollador de videojuegos con formación en Comunicación en
@@ -400,7 +414,8 @@
 
         <!-- Sección Proyectos -->
         <section id="projects-es">
-            <h2>Proyectos</h2>
+            <h2 class="fade-in">Proyectos</h2>
+
 
             <!-- Primer proyecto: Al ritmo de las leyendas -->
             <div class="slider" id="projectSlider-es">
@@ -426,7 +441,8 @@
                     <button onclick="nextSlide('es')">&#10095;</button>
                 </div>
             </div>
-            <div class="info">
+            <div class="info fade-in">
+
                 <h3>Proyecto Destacado: "Al ritmo de las leyendas"</h3>
                 <p>
                     Juego musical en 2D para móviles donde interpretas a César, un niño de Amagá, Antioquia,
@@ -477,19 +493,23 @@
         <section id="skills-es">
             <h2>Habilidades</h2>
             <div class="skills-container">
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Programación</h3>
                     <p>C++, Python, C#, Java</p>
                 </div>
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Motores de Juego</h3>
                     <p>Unity, Unreal Engine</p>
                 </div>
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Diseño y Multimedia</h3>
                     <p>Adobe Suite (Photoshop, Illustrator, Premiere), Animación y Efectos Visuales</p>
                 </div>
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Web e IA</h3>
                     <p>HTML, CSS, JavaScript,<br>Entusiasta de la Inteligencia Artificial</p>
                 </div>
@@ -547,8 +567,8 @@
 
         <!-- Sección About -->
         <section id="about-en">
-            <h2>About Me</h2>
-            <div class="about-content">
+            <h2 class="fade-in">About Me</h2>
+            <div class="about-content fade-in">
                 <img src="images/Perfil.jpg" alt="Profile Picture" class="profile-img">
                 <p>
                     I am Miguel Ángel González Peña, a passionate video game developer with an educational background in
@@ -562,7 +582,7 @@
 
         <!-- Sección Projects -->
         <section id="projects-en">
-            <h2>Projects</h2>
+            <h2 class="fade-in">Projects</h2>
 
             <!-- First project: Al ritmo de las leyendas -->
             <div class="slider" id="projectSlider-en">
@@ -588,7 +608,8 @@
                     <button onclick="nextSlide('en')">&#10095;</button>
                 </div>
             </div>
-            <div class="info">
+            <div class="info fade-in">
+
                 <h3>Featured Project: "Al ritmo de las leyendas"</h3>
                 <p>
                     A 2D musical game for mobile devices where you play as César, a boy from Amagá, Antioquia, facing
@@ -638,19 +659,23 @@
         <section id="skills-en">
             <h2>Skills</h2>
             <div class="skills-container">
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Programming</h3>
                     <p>C++, Python, C#, Java</p>
                 </div>
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Game Engines</h3>
                     <p>Unity, Unreal Engine</p>
                 </div>
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Design & Multimedia</h3>
                     <p>Adobe Suite (Photoshop, Illustrator, Premiere), Animation & Visual Effects</p>
                 </div>
-                <div class="skill">
+                <div class="skill fade-in">
+
                     <h3>Web & AI</h3>
                     <p>HTML, CSS, JavaScript,<br>Enthusiast of Artificial Intelligence</p>
                 </div>
@@ -725,6 +750,17 @@
                 document.getElementById('content-en').style.display = 'block';
             }
         }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target); // Evita que se repita
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
     </script>
 </body>
 
