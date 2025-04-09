@@ -3,912 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miguel Ángel González Peña - Portafolio</title>
-  <!-- Metaetiquetas SEO y Redes Sociales -->
-  <meta name="description" content="Portafolio de Miguel Ángel González Peña - Comunicador, desarrollador de videojuegos y tecnólogo en gestión de redes de datos.">
-  <meta property="og:title" content="Miguel Ángel González Peña - Portafolio">
-  <meta property="og:description" content="Portafolio de Miguel Ángel González Peña - Comunicador, desarrollador de videojuegos y tecnólogo en gestión de redes de datos.">
-  <meta property="og:image" content="images/portada.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.tusitio.com">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <!-- Fuente "Press Start 2P" para el estilo retro -->
+  <title>Miguel Ángel González Peña - Portfolio</title>
+  <meta name="description" content="Portfolio of Miguel Ángel González Peña - Communicator, Video Game Developer and Data Networks Technology Specialist">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --color-fondo: #111;
-      --color-primario: #ff0000;
-      --color-secundario: #202020;
-      --color-terciario: #181818;
-      --color-blanco: #fff;
-    }
-    /* Fondo animado */
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #111, #1c1c1c, #111);
-      background-size: 400% 400%;
-      animation: glowBackground 20s ease infinite;
-      color: var(--color-blanco);
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth;
-    }
-    @keyframes glowBackground {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    h1, h2, h3 {
-      font-family: 'Press Start 2P', cursive;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    a {
-      color: var(--color-primario);
-      text-decoration: none;
-    }
-    section h2, section h3 {
-      text-align: center;
-    }
-    /* Efecto glitch en el título */
-    .glitch {
-      position: relative;
-      color: var(--color-primario);
-    }
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-    }
-    .glitch::before {
-      animation: glitchTop 1s infinite linear alternate-reverse;
-      color: #f0f;
-    }
-    .glitch::after {
-      animation: glitchBottom 1s infinite linear alternate-reverse;
-      color: #0ff;
-    }
-    @keyframes glitchTop {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      20% { clip: rect(0, 9999px, 5px, 0); }
-      40% { clip: rect(0, 9999px, 2px, 0); }
-      60% { clip: rect(0, 9999px, 4px, 0); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-    @keyframes glitchBottom {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      20% { clip: rect(2px, 9999px, 6px, 0); }
-      40% { clip: rect(3px, 9999px, 5px, 0); }
-      60% { clip: rect(1px, 9999px, 7px, 0); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-    /* Global Language Switcher */
-    #lang-switcher {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 200;
-    }
-    #lang-switcher button {
-      background: #333;
-      border: none;
-      color: var(--color-blanco);
-      padding: 8px 12px;
-      margin-left: 5px;
-      cursor: pointer;
-      font-family: 'Press Start 2P', cursive;
-    }
-    #lang-switcher button:hover {
-      background: var(--color-primario);
-    }
-    /* Header único con dos menús */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 100;
-      padding: 10px 20px;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-    }
-    /* Menú en español (visible por defecto) */
-    #nav-es { display: flex; }
-    /* Menú en inglés (oculto por defecto) */
-    #nav-en { display: none; }
-    nav a {
-      font-size: 14px;
-      text-transform: uppercase;
-      transition: transform 0.3s ease;
-    }
-    nav a:hover { transform: translateY(-2px); }
-    /* Sección Hero con carrusel */
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .hero-carousel {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      width: 200%;
-      animation: scrollCarousel 30s linear infinite;
-      opacity: 0.3;
-    }
-    .hero-carousel img {
-      height: 100vh;
-      width: auto;
-      object-fit: cover;
-    }
-    @keyframes scrollCarousel {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      animation: heroZoom 10s infinite alternate;
-    }
-    @keyframes heroZoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.02); }
-    }
-    .hero-content h1 { font-size: 36px; margin-bottom: 20px; }
-    .hero-content p { font-size: 18px; margin-bottom: 30px; }
-    /* Typed.js effect */
-    .typed-text {
-      font-size: 20px;
-      color: var(--color-primario);
-      margin-bottom: 20px;
-    }
-    .cta {
-      padding: 15px 30px;
-      background-color: var(--color-primario);
-      color: var(--color-blanco);
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      text-transform: uppercase;
-      transition: background 0.3s;
-    }
-    .cta:hover { background-color: #d10000; }
-    .social-links {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      font-size: 14px;
-    }
-    .social-links a {
-      background: #333;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-    .social-links a:hover { background: var(--color-primario); }
-    main { padding-top: 60px; }
-    section { padding: 60px 20px; }
-    section + section { border-top: 4px solid var(--color-primario); }
-    /* Fondos diferenciados */
-    #hero { background: linear-gradient(135deg, #1e1e1e, #333); }
-    #about { background-color: var(--color-secundario); }
-    #projects { background-color: var(--color-terciario); }
-    #skills { background-color: var(--color-secundario); }
-    #contact { background-color: var(--color-terciario); }
-    .about-content {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-    }
-    .profile-img {
-      max-width: 200px;
-      border-radius: 50%;
-      border: 3px solid var(--color-primario);
-    }
-    .about-content p {
-      flex: 1;
-      min-width: 280px;
-      line-height: 1.6;
-    }
-    .slider {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-      overflow: hidden;
-      border: 2px solid var(--color-primario);
-    }
-    .slides { display: flex; transition: transform 0.5s ease-in-out; }
-    .slide { min-width: 100%; }
-    .slide img { width: 100%; display: block; }
-    .slider-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-    .slider-buttons button {
-      background: rgba(0,0,0,0.5);
-      border: none;
-      color: var(--color-blanco);
-      font-size: 24px;
-      padding: 10px;
-      cursor: pointer;
-    }
-    .info {
-      text-align: center;
-      margin-top: 20px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .premio-img {
-      max-width: 150px;
-      margin-top: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 15px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .skill {
-      background: #333;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      border: 2px solid var(--color-primario);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      font-size: 13px;
-      white-space: normal;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-    .skill:hover { 
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    }
-    .skill h3 {
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0;
-      margin: 0 0 8px 0;
-      white-space: normal;
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto;
-    }
-    .skill p { font-size: 12px; line-height: 1.4; margin: 0; }
-    .whatsapp-button {
-      display: inline-block;
-      padding: 15px 30px;
-      background-color: #25d366;
-      color: var(--color-blanco);
-      border-radius: 50px;
-      font-size: 18px;
-      text-transform: uppercase;
-      margin-right: 10px;
-      transition: background 0.3s;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    .whatsapp-button:hover { animation: pulse 1s infinite; }
-    @media (max-width: 768px) {
-      nav ul { flex-direction: column; }
-      .hero-content h1 { font-size: 28px; }
-      .about-content { flex-direction: column; }
-      .slider { max-width: 100%; }
-    }
-    /* Fondo de estrellas (opcional) */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 1px, transparent 1px, transparent 2px);
-      z-index: 999;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Canvas para partículas y estrellas -->
-  <canvas id="particles-bg"></canvas>
-  <canvas id="stars"></canvas>
-
-  <!-- Selector de idioma -->
-  <div id="lang-switcher" aria-label="Selector de idioma">
-    <button onclick="setLanguage('es')" aria-label="Español">ES</button>
-    <button onclick="setLanguage('en')" aria-label="Inglés">EN</button>
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <button id="es-btn" class="active" aria-label="Español">ES</button>
+    <button id="en-btn" aria-label="English">EN</button>
   </div>
 
-  <!-- Header único con menús en español e inglés -->
-  <header id="header-global">
-    <nav>
-      <ul id="nav-es">
-        <li><a href="#hero-es">Inicio</a></li>
-        <li><a href="#about-es">Sobre mí</a></li>
-        <li><a href="#projects-es">Proyectos</a></li>
-        <li><a href="#skills-es">Habilidades</a></li>
-        <li><a href="#contact-es">Contacto</a></li>
-      </ul>
-      <ul id="nav-en">
-        <li><a href="#hero-en">Home</a></li>
-        <li><a href="#about-en">About</a></li>
-        <li><a href="#projects-en">Projects</a></li>
-        <li><a href="#skills-en">Skills</a></li>
-        <li><a href="#contact-en">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <nav>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu">☰</button>
+
+        <!-- Desktop navigation -->
+        <ul class="desktop-nav">
+          <li><a href="#hero" data-lang-key="nav.home">Inicio</a></li>
+          <li><a href="#about" data-lang-key="nav.about">Sobre mí</a></li>
+          <li><a href="#projects" data-lang-key="nav.projects">Proyectos</a></li>
+          <li><a href="#skills" data-lang-key="nav.skills">Habilidades</a></li>
+          <li><a href="#contact" data-lang-key="nav.contact">Contacto</a></li>
+        </ul>
+
+        <!-- Mobile navigation -->
+        <div id="mobile-menu" class="mobile-menu">
+          <button id="close-menu-btn" class="close-menu-btn" aria-label="Close menu">✕</button>
+          <ul>
+            <li><a href="#hero" data-lang-key="nav.home">Inicio</a></li>
+            <li><a href="#about" data-lang-key="nav.about">Sobre mí</a></li>
+            <li><a href="#projects" data-lang-key="nav.projects">Proyectos</a></li>
+            <li><a href="#skills" data-lang-key="nav.skills">Habilidades</a></li>
+            <li><a href="#contact" data-lang-key="nav.contact">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main id="main-content">
-    <!-- Versión en Español -->
-    <section id="content-es" aria-label="Contenido en Español">
-      <!-- Sección Hero -->
-      <section id="hero-es" class="hero" role="banner">
-        <div class="hero-carousel">
-          <img src="images/fotoCarrusel1.jpg" alt="Imagen Carrusel 1" loading="lazy">
-          <img src="images/fotoCarrusel2.jpg" alt="Imagen Carrusel 2" loading="lazy">
-          <img src="images/fotoCarrusel3.jpg" alt="Imagen Carrusel 3" loading="lazy">
-          <img src="images/fotoCarrusel4.jpg" alt="Imagen Carrusel 4" loading="lazy">
-          <img src="images/fotoCarrusel5.jpg" alt="Imagen Carrusel 5" loading="lazy">
-          <!-- Duplicados para loop continuo -->
-          <img src="images/fotoCarrusel1.jpg" alt="Imagen Carrusel 1 duplicada" loading="lazy">
-          <img src="images/fotoCarrusel2.jpg" alt="Imagen Carrusel 2 duplicada" loading="lazy">
-          <img src="images/fotoCarrusel3.jpg" alt="Imagen Carrusel 3 duplicada" loading="lazy">
-          <img src="images/fotoCarrusel4.jpg" alt="Imagen Carrusel 4 duplicada" loading="lazy">
-          <img src="images/fotoCarrusel5.jpg" alt="Imagen Carrusel 5 duplicada" loading="lazy">
-        </div>
-        <div class="hero-content">
-          <h1 class="glitch" data-text="Miguel Ángel González Peña">Miguel Ángel González Peña</h1>
-          <p>Comunicador, desarrollador de Videojuegos y Tecnólogo en Gestión de Redes de Datos</p>
-          <!-- Efecto Typed.js -->
-          <p class="typed-text"></p>
-          <button class="cta" onclick="scrollToSection('about-es')">Descubre más</button>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/miguel-gonzalez-76a179168" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/bacan25" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-        </div>
-      </section>
+  <main>
+    <!-- Background Effects -->
+    <div class="stars-container">
+      <canvas id="particles-canvas"></canvas>
+      <canvas id="stars-canvas"></canvas>
+    </div>
 
-      <!-- Sección Sobre mí -->
-      <section id="about-es" aria-labelledby="about-es-heading">
-        <h2 class="fade-in" id="about-es-heading">Sobre mí</h2>
-        <div class="about-content fade-in">
-          <img src="images/Perfil.jpg" alt="Foto de perfil de Miguel Ángel González Peña" class="profile-img" loading="lazy">
-          <p>
-            Soy Miguel Ángel González Peña, desarrollador de videojuegos con formación en Comunicación en Entretenimiento Digital. Combino habilidades en programación (C++, Python, C# con Unity, Java), diseño gráfico (Adobe Suite), animación, edición audiovisual, web y me apasiona la Inteligencia Artificial. Además, tengo experiencia trabajando con motores como Unity y Unreal Engine.
-          </p>
-        </div>
-      </section>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="hero-carousel">
+        <img src="images/fotoCarrusel1.jpg" alt="Carousel Image 1" loading="lazy">
+        <img src="images/fotoCarrusel2.jpg" alt="Carousel Image 2" loading="lazy">
+        <img src="images/fotoCarrusel3.jpg" alt="Carousel Image 3" loading="lazy">
+        <img src="images/fotoCarrusel4.jpg" alt="Carousel Image 4" loading="lazy">
+        <img src="images/fotoCarrusel5.jpg" alt="Carousel Image 5" loading="lazy">
+        <!-- Duplicates for continuous loop -->
+        <img src="images/fotoCarrusel1.jpg" alt="Carousel Image 1" loading="lazy">
+        <img src="images/fotoCarrusel2.jpg" alt="Carousel Image 2" loading="lazy">
+        <img src="images/fotoCarrusel3.jpg" alt="Carousel Image 3" loading="lazy">
+        <img src="images/fotoCarrusel4.jpg" alt="Carousel Image 4" loading="lazy">
+        <img src="images/fotoCarrusel5.jpg" alt="Carousel Image 5" loading="lazy">
+      </div>
 
-      <!-- Sección Proyectos -->
-      <section id="projects-es" aria-labelledby="projects-es-heading">
-        <h2 class="fade-in" id="projects-es-heading">Proyectos</h2>
-        <!-- Proyecto "Al ritmo de las leyendas" -->
-        <div class="slider" id="projectSlider-es" aria-label="Slider de proyectos">
-          <div class="slides">
-            <div class="slide">
-              <img src="images/portada.jpg" alt="Portada - Al ritmo de las leyendas" loading="lazy">
-            </div>
-            <div class="slide">
-              <img src="images/tutorial.jpg" alt="Tutorial - Al ritmo de las leyendas" loading="lazy">
-            </div>
-            <div class="slide">
-              <img src="images/juego.jpg" alt="Juego - Al ritmo de las leyendas" loading="lazy">
-            </div>
-            <div class="slide">
-              <img src="images/gameOver.jpg" alt="Game Over - Al ritmo de las leyendas" loading="lazy">
-            </div>
-            <div class="slide">
-              <img src="images/RitmoPresen.png" alt="Presentación - Al ritmo de las leyendas" loading="lazy">
-            </div>
-          </div>
-          <div class="slider-buttons">
-            <button onclick="prevSlide('es')" aria-label="Diapositiva anterior">❮</button>
-            <button onclick="nextSlide('es')" aria-label="Diapositiva siguiente">❯</button>
-          </div>
+      <div class="hero-content">
+        <h1 class="glitch" data-text="Miguel Ángel González Peña" data-lang-key="hero.title">Miguel Ángel González Peña</h1>
+        <p class="hero-subtitle" data-lang-key="hero.subtitle">Comunicador, desarrollador de Videojuegos y Tecnólogo en Gestión de Redes de Datos</p>
+        <p id="typed-element" class="typed-text"></p>
+        <button id="learn-more-btn" class="cta-button pulse-hover" data-lang-key="hero.cta">Descubre más</button>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/miguel-gonzalez-76a179168" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+          <a href="https://github.com/bacan25" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
         </div>
-        <div class="info fade-in">
-          <h3>Proyecto Destacado: "Al ritmo de las leyendas"</h3>
-          <p>
-            Juego musical en 2D para móviles donde interpretas a César, un niño de Amagá, Antioquia, enfrentándose a leyendas y mitos del Suroeste mediante música típica. Desarrollé un motor de niveles similar a Guitar Hero y el proyecto fue reconocido con el "Premio Huellas 2023".
-          </p>
-          <img src="images/Premio.jpg" alt="Premio Huellas 2023" class="premio-img" loading="lazy">
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
-          <h4 style="margin-bottom: 1rem;">Video - Al ritmo de las leyendas</h4>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/mTA3mPvhEoo?si=Z_dRvXhLF24BaBGM"
-            title="Ritmo de las leyendas Teaser" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-        <hr style="margin: 40px auto; width: 60%; border: 2px dashed var(--color-primario);">
-        <!-- Proyecto "Haunted Blind" -->
-        <div class="info">
-          <h3>Haunted Blind</h3>
-          <img src="images/HauntedBlind.jpg" alt="Haunted Blind" style="max-width: 400px; margin-top: 20px;" loading="lazy">
-          <p style="margin-top: 20px;">
-            Haunted Blind es un juego para personas con discapacidad visual, cuyo objetivo es escapar de un lugar abandonado. Ofrece una experiencia inmersiva de terror mientras exploras mapas creados por la comunidad. <br><br>
-            <strong>Mi contribución:</strong> conexión a la base de datos y creación de la web para que los usuarios creen campañas.
-          </p>
-          <h4>Video - Haunted Blind</h4>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/k_bjDtAy-qE?si=phfSiEF2Q_4-v8NK"
-            title="Haunted Blind Teaser" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-      </section>
-
-      <!-- Sección Habilidades -->
-      <section id="skills-es" aria-labelledby="skills-es-heading">
-        <h2 id="skills-es-heading">Habilidades</h2>
-        <div class="skills-container">
-          <div class="skill fade-in">
-            <h3>Programación</h3>
-            <p>C++, Python, C#, Java</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Motores de Juego</h3>
-            <p>Unity, Unreal Engine</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Diseño y Multimedia</h3>
-            <p>Adobe Suite (Photoshop, Illustrator, Premiere), Animación & Efectos Visuales</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Web e IA</h3>
-            <p>HTML, CSS, JavaScript,<br>Entusiasta de la Inteligencia Artificial</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Desarrollo Móvil</h3>
-            <p>React Native, Flutter</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Control de Versiones</h3>
-            <p>Git, GitHub</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Edición de Video Reels</h3>
-            <p>Final Cut Pro, Premiere Pro</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Fotografía de Producto</h3>
-            <p>Adobe Lightroom, Photoshop</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Realidad Aumentada</h3>
-            <p>ARKit, ARCore, Unity AR Foundation</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Juegos para MetaQuest</h3>
-            <p>Unity, Unreal Engine</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Sección Contacto -->
-      <section id="contact-es" aria-labelledby="contact-es-heading">
-        <h2 id="contact-es-heading">Contacto</h2>
-        <div style="text-align: center;">
-          <a class="whatsapp-button" href="https://wa.me/3167269065?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios" target="_blank" rel="noopener noreferrer">Contáctame por WhatsApp</a>
-          <a href="cv/CVSP.pdf" target="_blank" class="whatsapp-button" style="background:#444;">Ver mi CV (PDF)</a>
-        </div>
-      </section>
+      </div>
     </section>
 
-    <!-- Versión en Inglés -->
-    <section id="content-en" aria-label="Contenido en Inglés" style="display: none;">
-      <section id="hero-en" class="hero" role="banner">
-        <div class="hero-carousel">
-          <img src="images/fotoCarrusel1.jpg" alt="Cover Image 1 - The Rhythm of Legends" loading="lazy">
-          <img src="images/fotoCarrusel2.jpg" alt="Cover Image 2 - The Rhythm of Legends" loading="lazy">
-          <img src="images/fotoCarrusel3.jpg" alt="Cover Image 3 - The Rhythm of Legends" loading="lazy">
-          <img src="images/fotoCarrusel4.jpg" alt="Cover Image 4 - The Rhythm of Legends" loading="lazy">
-          <img src="images/fotoCarrusel5.jpg" alt="Cover Image 5 - The Rhythm of Legends" loading="lazy">
-          <img src="images/fotoCarrusel1.jpg" alt="Cover Image 1 duplicate" loading="lazy">
-          <img src="images/fotoCarrusel2.jpg" alt="Cover Image 2 duplicate" loading="lazy">
-          <img src="images/fotoCarrusel3.jpg" alt="Cover Image 3 duplicate" loading="lazy">
-          <img src="images/fotoCarrusel4.jpg" alt="Cover Image 4 duplicate" loading="lazy">
-          <img src="images/fotoCarrusel5.jpg" alt="Cover Image 5 duplicate" loading="lazy">
-        </div>
-        <div class="hero-content">
-          <h1 class="glitch" data-text="Miguel Ángel González Peña">Miguel Ángel González Peña</h1>
-          <p>Communicator, Video Game Developer & Data Networks Technology Specialist</p>
-          <p class="typed-text"></p>
-          <button class="cta" onclick="scrollToSection('about-en')">Learn More</button>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/miguel-gonzalez-76a179168" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/bacan25" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-        </div>
-      </section>
-      <section id="about-en" aria-labelledby="about-en-heading">
-        <h2 class="fade-in" id="about-en-heading">About Me</h2>
+    <!-- About Section -->
+    <section id="about" class="section-secondary">
+      <div class="container">
+        <h2 class="section-title fade-in" data-lang-key="about.title">Sobre mí</h2>
         <div class="about-content fade-in">
-          <img src="images/Perfil.jpg" alt="Profile Picture of Miguel Ángel González Peña" class="profile-img" loading="lazy">
-          <p>
-            I am Miguel Ángel González Peña, a passionate video game developer with an educational background in Digital Entertainment Communication. I combine skills in programming (C++, Python, C#, Java), graphic design (Adobe Suite), animation, audiovisual editing, web development, and I'm enthusiastic about Artificial Intelligence. I also have experience working with game engines like Unity and Unreal Engine.
-          </p>
+          <div class="profile-image">
+            <img src="images/Perfil.jpg" alt="Profile" loading="lazy">
+          </div>
+          <div class="about-text">
+            <p data-lang-key="about.description">Soy Miguel Ángel González Peña, desarrollador de videojuegos con formación en Comunicación en Entretenimiento Digital. Combino habilidades en programación (C++, Python, C# con Unity, Java), diseño gráfico (Adobe Suite), animación, edición audiovisual, web y me apasiona la Inteligencia Artificial. Además, tengo experiencia trabajando con motores como Unity y Unreal Engine.</p>
+          </div>
         </div>
-      </section>
-      <section id="projects-en" aria-labelledby="projects-en-heading">
-        <h2 class="fade-in" id="projects-en-heading">Projects</h2>
-        <div class="slider" id="projectSlider-en" aria-label="Project Slider">
-          <div class="slides">
-            <div class="slide">
-              <img src="images/portada.jpg" alt="Cover - The Rhythm of Legends" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-tertiary">
+      <div class="container">
+        <h2 class="section-title fade-in" data-lang-key="projects.title">Proyectos</h2>
+
+        <!-- Project 1: Rhythm of Legends -->
+        <div class="project-item fade-in">
+          <div class="project-slider">
+            <div class="slider-container">
+              <div id="slider-track" class="slider-track">
+                <div class="slide"><img src="images/portada.jpg" alt="Cover - The Rhythm of Legends" loading="lazy"></div>
+                <div class="slide"><img src="images/tutorial.jpg" alt="Tutorial - The Rhythm of Legends" loading="lazy"></div>
+                <div class="slide"><img src="images/juego.jpg" alt="Game - The Rhythm of Legends" loading="lazy"></div>
+                <div class="slide"><img src="images/gameOver.jpg" alt="Game Over - The Rhythm of Legends" loading="lazy"></div>
+                <div class="slide"><img src="images/RitmoPresen.png" alt="Presentation - The Rhythm of Legends" loading="lazy"></div>
+              </div>
+              <button class="slider-btn prev-btn" aria-label="Previous slide">❮</button>
+              <button class="slider-btn next-btn" aria-label="Next slide">❯</button>
             </div>
-            <div class="slide">
-              <img src="images/tutorial.jpg" alt="Tutorial - The Rhythm of Legends" loading="lazy">
+          </div>
+
+          <div class="project-info">
+            <h3 data-lang-key="projects.rhythm.title">Proyecto Destacado: "Al ritmo de las leyendas"</h3>
+            <p data-lang-key="projects.rhythm.description">Juego musical en 2D para móviles donde interpretas a César, un niño de Amagá, enfrentándose a leyendas y mitos del Suroeste mediante música típica. Desarrollé un motor de niveles similar a Guitar Hero y el proyecto fue reconocido con el "Premio Huellas 2023".</p>
+            <img src="images/Premio.jpg" alt="Premio Huellas 2023" class="award-image" loading="lazy">
+            
+            <div class="project-video">
+              <h4 data-lang-key="projects.rhythm.video">Video - Al ritmo de las leyendas</h4>
+              <iframe 
+                src="https://www.youtube.com/embed/mTA3mPvhEoo?si=Z_dRvXhLF24BaBGM" 
+                title="Teaser - Al ritmo de las leyendas" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
             </div>
-            <div class="slide">
-              <img src="images/juego.jpg" alt="Game - The Rhythm of Legends" loading="lazy">
+          </div>
+        </div>
+
+        <!-- Project 2: Haunted Blind -->
+        <div class="project-item fade-in">
+          <div class="project-info">
+            <h3 data-lang-key="projects.haunted.title">Haunted Blind</h3>
+            <img src="images/HauntedBlind.jpg" alt="Haunted Blind" class="project-image" loading="lazy">
+            <p data-lang-key="projects.haunted.description">Haunted Blind es un juego diseñado para personas con discapacidad visual, donde el objetivo es escapar de un lugar abandonado. El proyecto ofrece una experiencia de terror inmersiva mientras el jugador explora mapas creados por la comunidad.</p>
+            <p><strong data-lang-key="projects.haunted.contribution">Mi contribución: conecté la base de datos y desarrollé la página web para campañas creadas por usuarios.</strong></p>
+            
+            <div class="project-video">
+              <h4 data-lang-key="projects.haunted.video">Video - Haunted Blind</h4>
+              <iframe 
+                src="https://www.youtube.com/embed/k_bjDtAy-qE?si=phfSiEF2Q_4-v8NK" 
+                title="Haunted Blind Teaser" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
             </div>
-            <div class="slide">
-              <img src="images/gameOver.jpg" alt="Game Over - The Rhythm of Legends" loading="lazy">
-            </div>
-            <div class="slide">
-              <img src="images/RitmoPresen.png" alt="Presentation - The Rhythm of Legends" loading="lazy">
-            </div>
-          </div>
-          <div class="slider-buttons">
-            <button onclick="prevSlide('en')" aria-label="Previous Slide">❮</button>
-            <button onclick="nextSlide('en')" aria-label="Next Slide">❯</button>
           </div>
         </div>
-        <div class="info fade-in">
-          <h3>Featured Project: "The Rhythm of Legends"</h3>
-          <p>
-            A 2D musical game for mobile devices where you play as César, a boy from Amagá, Antioquia, facing legends and myths from the Southwestern region using traditional music. I developed a level engine similar to Guitar Hero, and the project was recognized with the "Premio Huellas 2023".
-          </p>
-          <img src="images/Premio.jpg" alt="Premio Huellas 2023" class="premio-img" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-secondary">
+      <div class="container">
+        <h2 class="section-title fade-in" data-lang-key="skills.title">Habilidades</h2>
+        <div id="skills-container" class="skills-container fade-in">
+          <!-- Logos will be added dynamically with JavaScript -->
         </div>
-        <div style="display: flex; flex-direction: column; align-items: center; margin: 0 auto;">
-          <h4 style="margin-bottom: 1rem;">Video - The Rhythm of Legends</h4>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/mTA3mPvhEoo?si=Z_dRvXhLF24BaBGM"
-            title="The Rhythm of Legends Teaser" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-        <hr style="margin: 40px auto; width: 60%; border: 2px dashed var(--color-primario);">
-        <div class="info">
-          <h3>Haunted Blind</h3>
-          <img src="images/HauntedBlind.jpg" alt="Haunted Blind" style="max-width: 400px; margin-top: 20px;" loading="lazy">
-          <p style="margin-top: 20px;">
-            Haunted Blind is a game designed for people with visual disabilities, where the goal is to escape from an abandoned place. The project offers an immersive horror experience while the player explores maps created by the community. <br><br>
-            <strong>My contribution:</strong> connected the database and developed the web page for user-created campaigns.
-          </p>
-          <h4>Video - Haunted Blind</h4>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/k_bjDtAy-qE?si=phfSiEF2Q_4-v8NK"
-            title="Haunted Blind Teaser" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
-      </section>
-      <section id="skills-en" aria-labelledby="skills-en-heading">
-        <h2 id="skills-en-heading">Skills</h2>
-        <div class="skills-container">
-          <div class="skill fade-in">
-            <h3>Programming</h3>
-            <p>C++, Python, C#, Java</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Game Engines</h3>
-            <p>Unity, Unreal Engine</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Design & Multimedia</h3>
-            <p>Adobe Suite (Photoshop, Illustrator, Premiere), Animation & Visual Effects</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Web & AI</h3>
-            <p>HTML, CSS, JavaScript,<br>Enthusiast of Artificial Intelligence</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Mobile Development</h3>
-            <p>React Native, Flutter</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Version Control</h3>
-            <p>Git, GitHub</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Video Reels Editing</h3>
-            <p>Final Cut Pro, Premiere Pro</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Product Photography</h3>
-            <p>Adobe Lightroom, Photoshop</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>Augmented Reality</h3>
-            <p>ARKit, ARCore, Unity AR Foundation</p>
-          </div>
-          <div class="skill fade-in">
-            <h3>MetaQuest Games</h3>
-            <p>Unity, Unreal Engine</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-tertiary">
+      <div class="container">
+        <h2 class="section-title fade-in" data-lang-key="contact.title">Contacto</h2>
+        <div class="contact-buttons fade-in">
+          <a href="https://wa.me/3167269065?text=Hola%2C%20estoy%20interesado%20en%20tus%20servicios" target="_blank" rel="noopener noreferrer" class="contact-btn whatsapp-btn pulse-hover" data-lang-key="contact.whatsapp">Contáctame por WhatsApp</a>
+          
+          <a href="/cv/CVSP.pdf" id="cv-link" target="_blank" rel="noopener noreferrer" class="contact-btn cv-btn pulse-hover" data-lang-key="contact.cv">Ver mi CV (PDF)</a>
+          
+          <div class="email-container">
+            <button id="copy-email-btn" class="contact-btn email-btn pulse-hover" data-lang-key="contact.email">Copiar Email</button>
+            <div id="email-tooltip" class="email-tooltip" data-lang-key="contact.email.copied">Email copiado</div>
           </div>
         </div>
-      </section>
-      <section id="contact-en" aria-labelledby="contact-en-heading">
-        <h2 id="contact-en-heading">Contact</h2>
-        <div style="text-align: center;">
-          <a class="whatsapp-button" href="https://wa.me/3167269065?text=Hello%2C%20I%27m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer">Contact Me on WhatsApp</a>
-          <!-- Se agrega botón de CV en inglés -->
-          <a href="cv/CVENG.pdf" target="_blank" class="whatsapp-button" style="background:#444;">View my CV (PDF)</a>
-          <button id="copy-email-en" class="whatsapp-button" style="background:#444;">Copy Email</button>
-        </div>
-      </section>
+      </div>
     </section>
   </main>
 
-  <footer style="text-align: center; padding: 20px; background: var(--color-secundario);">
-    <p>&copy; 2025 Miguel Ángel González Peña. Todos los derechos reservados.</p>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="copyright" data-lang-key="footer.copyright">© 2025 Miguel Ángel González Peña. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
-  <!-- GSAP y ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <!-- Typed.js -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script>
-    // Variable global para la instancia de Typed.js
-    var typedInstance;
-    function initTyped(selector, strings) {
-      if (typedInstance) {
-        typedInstance.destroy();
-      }
-      var element = document.querySelector(selector);
-      if (element) {
-        typedInstance = new Typed(element, {
-          strings: strings,
-          typeSpeed: 50,
-          backSpeed: 30,
-          loop: true
-        });
-      }
-    }
-    // Inicializamos Typed.js para la versión en español al cargar la página
-    document.addEventListener("DOMContentLoaded", function() {
-      initTyped("#content-es .typed-text", [
-        "Desarrollador de videojuegos",
-        "Desarrollador de aplicaciones",
-        "Editor audiovisual",
-        "Creativo"
-      ]);
-    });
-
-    // GSAP con ScrollTrigger para elementos con fade-in
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.from(".fade-in", {
-      scrollTrigger: {
-        trigger: ".fade-in",
-        start: "top 80%"
-      },
-      duration: 1,
-      opacity: 0,
-      y: 50,
-      stagger: 0.3,
-      ease: "power2.out"
-    });
-
-    // Efecto parallax en el hero-carousel con el movimiento del ratón
-    document.addEventListener("mousemove", function(e) {
-      var x = e.clientX / window.innerWidth;
-      var y = e.clientY / window.innerHeight;
-      document.querySelector(".hero-carousel").style.transform = "translate(" + (-x * 50) + "px, " + (-y * 50) + "px)";
-    });
-  </script>
-
-  <!-- Funciones básicas: scroll, slider, cambio de idioma, IntersectionObserver -->
-  <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-    let currentSlide_es = 0, currentSlide_en = 0;
-    const slides_es = document.querySelectorAll('#content-es .slide'),
-          totalSlides_es = slides_es.length,
-          slides_en = document.querySelectorAll('#content-en .slide'),
-          totalSlides_en = slides_en.length;
-    function showSlide(lang, index) {
-      if (lang === 'es') {
-        currentSlide_es = index >= totalSlides_es ? 0 : index < 0 ? totalSlides_es - 1 : index;
-        document.querySelector('#content-es .slides').style.transform = `translateX(${-currentSlide_es * 100}%)`;
-      } else {
-        currentSlide_en = index >= totalSlides_en ? 0 : index < 0 ? totalSlides_en - 1 : index;
-        document.querySelector('#content-en .slides').style.transform = `translateX(${-currentSlide_en * 100}%)`;
-      }
-    }
-    function nextSlide(lang) { showSlide(lang, lang === 'es' ? currentSlide_es + 1 : currentSlide_en + 1); }
-    function prevSlide(lang) { showSlide(lang, lang === 'es' ? currentSlide_es - 1 : currentSlide_en - 1); }
-    setInterval(() => { nextSlide('es'); }, 5000);
-    setInterval(() => { nextSlide('en'); }, 5000);
-    function setLanguage(lang) {
-      if (lang === 'es') {
-        document.getElementById('nav-es').style.display = 'flex';
-        document.getElementById('nav-en').style.display = 'none';
-        document.getElementById('content-es').style.display = 'block';
-        document.getElementById('content-en').style.display = 'none';
-        // Inicializamos Typed.js para español
-        initTyped("#content-es .typed-text", [
-          "Desarrollador de videojuegos",
-          "Desarrollador de aplicaciones",
-          "Editor audiovisual",
-          "Creativo"
-        ]);
-      } else {
-        document.getElementById('nav-es').style.display = 'none';
-        document.getElementById('nav-en').style.display = 'flex';
-        document.getElementById('content-es').style.display = 'none';
-        document.getElementById('content-en').style.display = 'block';
-        // Inicializamos Typed.js para inglés
-        initTyped("#content-en .typed-text", [
-          "Video Game Developer",
-          "App Developer",
-          "Audiovisual Editor",
-          "Creative"
-        ]);
-      }
-    }
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('appear');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
-
-  <!-- Funciones para copiar email -->
-  <script>
-    function showTooltip(button, message) {
-      let tooltip = document.createElement("span");
-      tooltip.innerText = message;
-      tooltip.style.position = "absolute";
-      tooltip.style.background = "var(--color-primario)";
-      tooltip.style.color = "var(--color-blanco)";
-      tooltip.style.padding = "5px 10px";
-      tooltip.style.borderRadius = "5px";
-      tooltip.style.top = (button.offsetTop - button.offsetHeight - 10) + "px";
-      tooltip.style.left = button.offsetLeft + "px";
-      tooltip.style.opacity = "1";
-      tooltip.style.transition = "opacity 0.5s ease";
-      button.parentNode.appendChild(tooltip);
-      setTimeout(function () {
-        tooltip.style.opacity = "0";
-        setTimeout(() => { tooltip.remove(); }, 500);
-      }, 2000);
-    }
-    function copyEmail(lang) {
-      const email = "gonzalezmiguel2000@gmail.com";
-      navigator.clipboard.writeText(email).then(() => {
-        if (lang === "es") {
-          showTooltip(document.getElementById("copy-email-es"), "Email copiado");
-        } else {
-          showTooltip(document.getElementById("copy-email-en"), "Email copied");
-        }
-      }).catch(err => {
-        alert(lang === "es" ? "Error al copiar el email" : "Error copying email");
-      });
-    }
-    document.getElementById("copy-email-es")?.addEventListener("click", function () { copyEmail("es"); });
-    document.getElementById("copy-email-en")?.addEventListener("click", function () { copyEmail("en"); });
-  </script>
-
-  <!-- Partículas en el fondo -->
-  <script>
-    (function () {
-      const canvasParticles = document.getElementById("particles-bg"),
-            ctxParticles = canvasParticles.getContext("2d");
-      canvasParticles.width = window.innerWidth;
-      canvasParticles.height = window.innerHeight;
-      const colors = ["#ff004c", "#00ffff", "#00ff00", "#ff00ff", "#ffffff"];
-      let particles = Array.from({ length: 150 }, () => ({
-        x: Math.random() * canvasParticles.width,
-        y: Math.random() * canvasParticles.height,
-        radius: Math.random() * 2 + 1,
-        speedY: Math.random() * 0.8 + 0.2,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      }));
-      function drawParticles() {
-        ctxParticles.clearRect(0, 0, canvasParticles.width, canvasParticles.height);
-        particles.forEach(p => {
-          ctxParticles.beginPath();
-          ctxParticles.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctxParticles.fillStyle = p.color;
-          ctxParticles.shadowColor = p.color;
-          ctxParticles.shadowBlur = 12;
-          ctxParticles.fill();
-          p.y += p.speedY;
-          if (p.y > canvasParticles.height) { p.y = 0; p.x = Math.random() * canvasParticles.width; }
-        });
-        requestAnimationFrame(drawParticles);
-      }
-      drawParticles();
-      window.addEventListener("resize", () => {
-        canvasParticles.width = window.innerWidth;
-        canvasParticles.height = window.innerHeight;
-      });
-      canvasParticles.style.position = "fixed";
-      canvasParticles.style.top = "0";
-      canvasParticles.style.left = "0";
-      canvasParticles.style.zIndex = "0";
-      canvasParticles.style.pointerEvents = "none";
-    })();
-  </script>
-
-  <!-- Estrellas en el fondo -->
-  <script>
-    (function () {
-      const canvasStars = document.getElementById("stars"),
-            ctxStars = canvasStars.getContext("2d");
-      canvasStars.width = window.innerWidth;
-      canvasStars.height = window.innerHeight;
-      let stars = Array.from({ length: 100 }, () => ({
-        x: Math.random() * canvasStars.width,
-        y: Math.random() * canvasStars.height,
-        radius: Math.random() * 1.5 + 0.5,
-        speed: Math.random() * 0.5 + 0.2
-      }));
-      function drawStars() {
-        ctxStars.clearRect(0, 0, canvasStars.width, canvasStars.height);
-        ctxStars.fillStyle = "#ffffff33";
-        stars.forEach(star => {
-          ctxStars.beginPath();
-          ctxStars.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-          ctxStars.fill();
-          star.y += star.speed;
-          if (star.y > canvasStars.height) star.y = 0;
-        });
-        requestAnimationFrame(drawStars);
-      }
-      drawStars();
-      window.addEventListener('resize', () => {
-        canvasStars.width = window.innerWidth;
-        canvasStars.height = window.innerHeight;
-      });
-      canvasStars.style.position = "fixed";
-      canvasStars.style.top = "0";
-      canvasStars.style.left = "0";
-      canvasStars.style.zIndex = "0";
-      canvasStars.style.pointerEvents = "none";
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
